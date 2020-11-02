@@ -35,6 +35,7 @@ Implementation of this interaction depends on third-party system integration cap
 ```
 cdk [--profile <AWS PROFILE>] bootstrap aws://{aws_account_id}/{region}
 ```
+
 where `{aws_account_id}` represents your AWS Account ID.
 
 ### (Optional) VPC Stack
@@ -79,7 +80,6 @@ test-hl7-server-stack.TestHl7ServerS3 = test-hl7-server-stack-hl7testserveroutpu
 
 Before deploying Integration Transform stack, you will need to obtain FHIR Works on AWS resource router lambda execution role (`FHIR_SERVICE_LAMBDA_ROLE_ARN: FhirServiceLambdaRoleArn`), which is one of outputs of the FHIR Works on AWS deployment stack. Please refer to [this section of the documentation](https://github.com/awslabs/fhir-works-on-aws-deployment/blob/api/INSTALL.md#aws-service-deployment) describing FHIR Works on AWS deployment. You can use `serverless info --verbose --aws-profile <AWS PROFILE> --stage <STAGE> --region <AWS_REGION>` to produce stack output post deployment.
 
-
 You will pass lambda execution role to the Integration Transform deployment process as CDK context variable `resource-router-lambda-role`.
 
 Other context variables:
@@ -90,7 +90,7 @@ Other context variables:
 
 `hl7-port`: TCP port that HL7v2 server will be listening on
 
-`test-server-output-bucket-name`: if you deploy optional Test HL7 Server stack, you can found this parameter in the stack outputs (`test-hl7-server-stack.TestHl7ServerS3`)
+`test-server-output-bucket-name`: if you deploy optional Test HL7 Server stack, you can find this parameter in the stack outputs (`test-hl7-server-stack.TestHl7ServerS3`)
 
 ```
 cd ${REPOSITORY_ROOT}/fhir-hl7-transform/cdk-infra
@@ -109,14 +109,14 @@ fhir-to-hl7v2-transform.TransformApiRegion = us-west-2
 fhir-to-hl7v2-transform.TransformApiRootUrl = https://<api-id>.execute-api.us-west-2.amazonaws.com/prod/
 ```
 
-These values will be used to create AWS Systems Manager Parameter Store parameters necessary to integrate FHIR Works on AWS with API interface with this Integration Transform:
-`/fhir-service/integration-transform/<STAGE>/url` and `/fhir-service/integration-transform/<STAGE>/awsRegion`, where STAGE is the stage name that you used when deploying FHIR Works on AWS. For more information please refer to this [link](https://github.com/awslabs/fhir-works-on-aws-deployment/blob/api/INSTALL.md#store-integration-transform-info-in-aws-system-manager-parameter-store).
+These values will be used to create AWS System Manager parameters on FHIR Works on AWS. FHIR Works on AWS will make API requests to the URL and region specified in these parameters. This allows FHIR Works on AWS to integrate with this Integration Transform.
+FHIR Works on AWS Integration Transform parameters are: `/fhir-service/integration-transform/<STAGE>/url` and `/fhir-service/integration-transform/<STAGE>/awsRegion`, where STAGE is the stage name that you used when deploying FHIR Works on AWS. For more information please refer to this [link](https://github.com/awslabs/fhir-works-on-aws-deployment/blob/api/INSTALL.md#store-integration-transform-info-in-aws-system-manager-parameter-store).
 
 These outputs can also be viewed in AWS Console by navigating to CloudFormation service page in the region where the stack was deployed, selecting appropriate stack, and clicking on Outputs tab.
 
 ## Testing
 
-You can follow testing steps outlined in [FHIR Works on AWS documentation](https://github.com/awslabs/fhir-works-on-aws-deployment/blob/api/README.md#usage-instructions). This Integration Transform support CREATE, READ, and UPDATE (not DELETE) interactions on Patient resource. An example Patient resource can be found [here](resources/patient.json). 
+You can follow testing steps outlined in [FHIR Works on AWS documentation](https://github.com/awslabs/fhir-works-on-aws-deployment/blob/api/README.md#usage-instructions). This Integration Transform support CREATE, READ, and UPDATE (not DELETE) interactions on Patient resource. An example Patient resource can be found [here](resources/patient.json).
 
 ## Security
 
