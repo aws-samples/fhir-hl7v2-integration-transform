@@ -1,0 +1,121 @@
+{
+    "resourceType": "Patient",
+    "identifier": [{
+            "value": "12345",
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "type": {
+                "coding": [{
+                    "code": "MR"
+                }]
+            },
+            "assigner": {
+                "display": "Acme Healthcare"
+            }
+        },
+        {
+            "value": "789045",
+            "system": "urn:oid:1.2.36.146.595.217.0.1",
+            "type": {
+                "coding": [{
+                    "code": "MR"
+                }]
+            }
+        }
+    ],
+    "name": [{
+            "family": "Chalmers",
+            "given": [
+                "Peter",
+                "James"
+            ],
+            "use": "official"
+        },
+        {
+            "given": [
+                "Jim"
+            ],
+            "use": "usual"
+        },
+        {
+            "family": "Simpson",
+            "given": [
+                "Peter",
+                "James",
+                "Homer"
+            ],
+            "use": "maiden"
+        }
+    ],
+    "birthDate": "1974-12-25",
+    "gender": "male",
+    "address": [{
+            "line": [
+                "534 Erewhon St",
+                "Apt 3-A"
+            ],
+            "city": "PleasantVille",
+            "state": "Vic",
+            "postalCode": "3999",
+            "use": "home",
+            "district": "Rainbow"
+        },
+        {
+            "line": [
+                "534 Erewhon St"
+            ],
+            "city": "PleasantVille",
+            "state": "Vic",
+            "postalCode": "3999",
+            "use": "work",
+            "district": "Rainbow"
+        }
+    ],
+    "telecom": [{
+            "use": "mobile",
+            "value": "(03) 3410 5613"
+        },
+        {
+            "use": "old",
+            "value": "(03) 5555 8834"
+        },
+        {
+            "use": "work",
+            "value": "(03) 5555 6473"
+        }
+    ],
+    "contact": [{
+            "name": [{
+                "family": "du Marché",
+                "given": [
+                    "Bénédicte"
+                ]
+            }],
+            "address": [{
+                "line": [
+                    "534 Erewhon St"
+                ],
+                "city": "PleasantVille",
+                "state": "Vic",
+                "postalCode": "3999",
+                "use": "home"
+            }],
+            "telecom": [{
+                "value": "+33 (237) 998327"
+            }],
+            "relationship": [{
+                "coding": [{
+                    "code": "N"
+                }]
+            }]
+        },
+        {
+            "name": [{
+                "family": "Smith",
+                "given": [
+                    "Jane",
+                    "Marie"
+                ]
+            }]
+        }
+    ]
+}

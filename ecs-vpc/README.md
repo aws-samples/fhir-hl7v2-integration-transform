@@ -1,0 +1,2 @@
+### VPC for ECS on Fargate containers
+The purpose of this optional CDK app is to create Virtual Private network in two availability zones with one private and one public subnet. This VPC will be used to facilitate ECS on Fargate container networking.
